@@ -3,36 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\models\\rectangulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:models\\rectangulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\models\\gestorfiguras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:models\\gestorfiguras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\models\\triangulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:models\\triangulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\services\\gestorfigurasremote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:services\\gestorfigurasremote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\figurasgeometricas.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:figurasgeometricas.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\models\\figurareaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:models\\figurareaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\models\\figuracreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:models\\figuracreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\models\\circulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:models\\circulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\models\\figura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:models\\figura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|c:\\users\\maty anderegg\\desktop\\segundo cuatrimestre\\programacion 2\\figurasgeometricas\\figurasgeometricas.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5F005494-6849-431C-825A-81BB7F552400}|FigurasGeometricas.csproj|solutionrelative:figurasgeometricas.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,8 +50,47 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FigurasGeometricas",
+              "DocumentIndex": 2,
+              "Title": "FiguraReadDto.cs",
+              "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\FiguraReadDto.cs",
+              "RelativeDocumentMoniker": "Models\\FiguraReadDto.cs",
+              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\FiguraReadDto.cs",
+              "RelativeToolTip": "Models\\FiguraReadDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T20:25:20.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FiguraCreateDto.cs",
+              "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\FiguraCreateDto.cs",
+              "RelativeDocumentMoniker": "Models\\FiguraCreateDto.cs",
+              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\FiguraCreateDto.cs",
+              "RelativeToolTip": "Models\\FiguraCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T20:25:07.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GestorFigurasRemote.cs",
+              "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Services\\GestorFigurasRemote.cs",
+              "RelativeDocumentMoniker": "Services\\GestorFigurasRemote.cs",
+              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Services\\GestorFigurasRemote.cs",
+              "RelativeToolTip": "Services\\GestorFigurasRemote.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T20:24:16.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FigurasGeometricas.csproj",
               "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\FigurasGeometricas.csproj",
               "RelativeDocumentMoniker": "FigurasGeometricas.csproj",
               "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\FigurasGeometricas.csproj",
@@ -71,83 +102,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Menu.cs",
               "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Menu.cs",
               "RelativeDocumentMoniker": "Menu.cs",
-              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Menu.cs*",
-              "RelativeToolTip": "Menu.cs*",
-              "ViewState": "AgIAANQAAAAAAAAAAAAcwO0AAAAqAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Menu.cs",
+              "RelativeToolTip": "Menu.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAswHwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-13T22:20:28.241Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GestorFiguras.cs",
-              "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\GestorFiguras.cs",
-              "RelativeDocumentMoniker": "Models\\GestorFiguras.cs",
-              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\GestorFiguras.cs",
-              "RelativeToolTip": "Models\\GestorFiguras.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAIwC0AAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T22:20:11.494Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Triangulo.cs",
-              "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\Triangulo.cs",
-              "RelativeDocumentMoniker": "Models\\Triangulo.cs",
-              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\Triangulo.cs",
-              "RelativeToolTip": "Models\\Triangulo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T22:20:00.534Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Rectangulo.cs",
-              "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\Rectangulo.cs",
-              "RelativeDocumentMoniker": "Models\\Rectangulo.cs",
-              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\Rectangulo.cs",
-              "RelativeToolTip": "Models\\Rectangulo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T22:19:49.368Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Circulo.cs",
-              "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\Circulo.cs",
-              "RelativeDocumentMoniker": "Models\\Circulo.cs",
-              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\Circulo.cs",
-              "RelativeToolTip": "Models\\Circulo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T22:19:39.19Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Figura.cs",
-              "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\Figura.cs",
-              "RelativeDocumentMoniker": "Models\\Figura.cs",
-              "ToolTip": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Models\\Figura.cs",
-              "RelativeToolTip": "Models\\Figura.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T22:19:25.247Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Maty Anderegg\\Desktop\\Segundo Cuatrimestre\\Programacion 2\\FigurasGeometricas\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",

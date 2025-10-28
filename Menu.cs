@@ -1,8 +1,10 @@
 ﻿using Spectre.Console;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using FigurasGeometricas.Models;
+using FigurasGeometricas.Services;
 using Color = Spectre.Console.Color;
-using FigurasGeometricas.Models; // 👈 importante para acceder a las clases Figura, Circulo, etc.
 
 namespace FigurasGeometricas
 {
@@ -17,7 +19,7 @@ namespace FigurasGeometricas
             " Salir"
         };
 
-        public static void Mostrar(GestorFiguras gestor)
+        public static async Task MostrarAsync(GestorFigurasRemoto gestor)
         {
             bool salir = false;
 
@@ -30,7 +32,7 @@ namespace FigurasGeometricas
                         .LeftJustified()
                         .Color(Color.Aqua));
 
-                AnsiConsole.MarkupLine("[bold yellow]Sistema de Gestión de Figuras Geométricas[/]\n");
+                AnsiConsole.MarkupLine("[bold yellow]Cliente de Figuras Geométricas (API)[/]\n");
 
                 string opcion = AnsiConsole.Prompt(
                     new SelectionPrompt<string>()
@@ -40,12 +42,12 @@ namespace FigurasGeometricas
                 );
 
                 Console.Clear();
-                EjecutarOpcion(Array.IndexOf(opciones, opcion), gestor, ref salir);
+                salir = await EjecutarOpcionAsync(Array.IndexOf(opciones, opcion), gestor, salir);
             }
         }
 
-        // 🔹 Este método usa los de dibujo más abajo
-        private static void AgregarFigura(GestorFiguras gestor)
+        // 🔹 Crear figura (POST)
+        private static async Task AgregarFiguraAsync(GestorFigurasRemoto gestor)
         {
             var tipo = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
@@ -55,192 +57,159 @@ namespace FigurasGeometricas
 
             string nombre = AnsiConsole.Ask<string>("Ingrese [green]el nombre[/] de la figura:");
 
+            var dto = new FiguraCreateDto
+            {
+                Tipo = tipo.ToLower()
+                           .Replace("í", "i")
+                           .Replace("é", "e")
+                           .Replace("á", "a")
+                           .Replace("ó", "o")
+                           .Replace("ú", "u"),
+                Nombre = nombre
+            };
+
             switch (tipo)
             {
                 case "Círculo":
-                    double radio = AnsiConsole.Ask<double>("Ingrese el [yellow]radio[/]:");
-                    gestor.AgregarFigura(new Circulo(nombre, radio));
-                    AnsiConsole.Write(new Rule("[aqua]Vista previa del Círculo[/]").RuleStyle("aqua"));
-                    DibujarCirculo(radio);
+                    dto.Radio = AnsiConsole.Ask<double>("Ingrese el [yellow]radio[/]:");
+                    if (dto.Radio <= 0)
+                    {
+                        AnsiConsole.MarkupLine("[red]El radio debe ser mayor a 0.[/]");
+                        return;
+                    }
                     break;
 
                 case "Rectángulo":
-                    double b = AnsiConsole.Ask<double>("Ingrese la [yellow]base[/]:");
-                    double h = AnsiConsole.Ask<double>("Ingrese la [yellow]altura[/]:");
-                    gestor.AgregarFigura(new Rectangulo(nombre, b, h));
-                    AnsiConsole.Write(new Rule("[green]Vista previa del Rectángulo[/]").RuleStyle("green"));
-                    DibujarRectangulo(b, h);
+                    dto.Base = AnsiConsole.Ask<double>("Ingrese la [yellow]base[/]:");
+                    dto.Altura = AnsiConsole.Ask<double>("Ingrese la [yellow]altura[/]:");
+                    if (dto.Base <= 0 || dto.Altura <= 0)
+                    {
+                        AnsiConsole.MarkupLine("[red]Base y altura deben ser mayores a 0.[/]");
+                        return;
+                    }
                     break;
 
                 case "Triángulo":
-                    double ladoA = AnsiConsole.Ask<double>("Ingrese el [yellow]lado A[/]:");
-                    double ladoB = AnsiConsole.Ask<double>("Ingrese el [yellow]lado B[/]:");
-                    double ladoC = AnsiConsole.Ask<double>("Ingrese el [yellow]lado C[/]:");
+                    dto.LadoA = AnsiConsole.Ask<double>("Ingrese el [yellow]lado A[/]:");
+                    dto.LadoB = AnsiConsole.Ask<double>("Ingrese el [yellow]lado B[/]:");
+                    dto.LadoC = AnsiConsole.Ask<double>("Ingrese el [yellow]lado C[/]:");
 
-                    // Validación de triángulo antes de crear el objeto
-                    if (ladoA + ladoB <= ladoC || ladoA + ladoC <= ladoB || ladoB + ladoC <= ladoA)
+                    if (dto.LadoA <= 0 || dto.LadoB <= 0 || dto.LadoC <= 0)
                     {
-                        AnsiConsole.MarkupLine("[red] Los lados ingresados no forman un triángulo válido.[/]");
-                        AnsiConsole.MarkupLine("[yellow]Presione cualquier tecla para volver al menú...[/]");
-                        Console.ReadKey(true);
-                        return; // 🔹 Salimos del 'case', sin agregar la figura
+                        AnsiConsole.MarkupLine("[red]Todos los lados deben ser mayores a 0.[/]");
+                        return;
                     }
 
-                    var triangulo = new Triangulo(nombre, ladoA, ladoB, ladoC);
-                    gestor.AgregarFigura(triangulo);
-
-                    AnsiConsole.Write(new Rule("[yellow]Vista previa del Triángulo[/]").RuleStyle("yellow"));
-
-                    string tipoTriangulo = triangulo.TipoTriangulo();
-                    int altura = (int)Math.Round(Math.Min(ladoA, Math.Min(ladoB, ladoC)));
-                    DibujarTriangulo(altura, tipoTriangulo);
-
-                    double area = triangulo.CalcularArea();
-                    AnsiConsole.MarkupLine($"[green]Área:[/] {area:F2}, [green]Tipo:[/] {tipoTriangulo}");
-                    break;
-
-            }
-        }
-
-
-        // 🌀 --- FUNCIONES DE DIBUJO ---
-        private static void DibujarCirculo(double radio)
-        {
-            int r = (int)Math.Round(radio);
-            for (int y = -r; y <= r; y++)
-            {
-                for (int x = -r; x <= r; x++)
-                {
-                    double d = Math.Sqrt(x * x + y * y);
-                    if (d < r)
-                        AnsiConsole.Markup("[aqua]██[/]");
-                    else
-                        AnsiConsole.Markup("  ");
-                }
-                Console.WriteLine();
-            }
-        }
-
-        private static void DibujarRectangulo(double b, double h)
-        {
-            int width = (int)Math.Round(b);
-            int height = (int)Math.Round(h);
-
-            for (int i = 0; i < height; i++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    if (i == 0 || i == height - 1 || j == 0 || j == width - 1)
-                        AnsiConsole.Markup("[green]██[/]");
-                    else
-                        AnsiConsole.Markup("[black]  [/]");
-                }
-                Console.WriteLine();
-            }
-        }
-
-        private static void DibujarTriangulo(int altura, string tipo)
-        {
-            switch (tipo)
-            {
-                case "Equilátero":
-                    for (int i = 1; i <= altura; i++)
+                    // Validar desigualdad triangular
+                    if (dto.LadoA + dto.LadoB <= dto.LadoC ||
+                        dto.LadoA + dto.LadoC <= dto.LadoB ||
+                        dto.LadoB + dto.LadoC <= dto.LadoA)
                     {
-                        Console.Write(new string(' ', altura - i));
-                        for (int j = 0; j < (2 * i - 1); j++)
-                            AnsiConsole.Markup("[yellow]^[/]");
-                        Console.WriteLine();
-                    }
-                    break;
-
-                case "Isósceles":
-                    for (int i = 1; i <= altura; i++)
-                    {
-                        Console.Write(new string(' ', altura - i));
-                        for (int j = 0; j < i; j++)
-                            AnsiConsole.Markup("[yellow]^[/]");
-                        Console.WriteLine();
-                    }
-                    break;
-
-                case "Escaleno":
-                    for (int i = 1; i <= altura; i++)
-                    {
-                        for (int j = 0; j < i; j++)
-                            AnsiConsole.Markup("[yellow]^[/]");
-                        Console.WriteLine();
+                        AnsiConsole.MarkupLine("[red]Los lados ingresados no forman un triángulo válido.[/]");
+                        return;
                     }
                     break;
             }
-        }
 
+            var creada = await gestor.CrearFiguraAsync(dto);
 
-
-        private static void EjecutarOpcion(int opcion, GestorFiguras gestor, ref bool salir)
-        {
-            switch (opcion)
+            if (creada != null)
             {
-                case 0:
-                    AgregarFigura(gestor);
-                    AnsiConsole.MarkupLine("\n[grey]Presione una tecla para continuar...[/]");
-                    Console.ReadKey();
-                    break;
-                case 1:
-                    EliminarFigura(gestor);
-                    AnsiConsole.MarkupLine("\n[grey]Presione una tecla para continuar...[/]");
-                    Console.ReadKey();
-                    break;
-                case 2:
-                    MostrarFiguras(gestor);
-                    AnsiConsole.MarkupLine("\n[grey]Presione una tecla para continuar...[/]");
-                    Console.ReadKey();
-                    break;
-                case 3:
-                    MostrarTotales(gestor);
-                    AnsiConsole.MarkupLine("\n[grey]Presione una tecla para continuar...[/]");
-                    Console.ReadKey();
-                    break;
-                case 4:
-                    salir = true;
-                    break;
+                AnsiConsole.MarkupLine($"[green]Figura creada correctamente:[/] [bold]{creada.Nombre}[/] (ID {creada.Id})");
+                AnsiConsole.MarkupLine($"Área: {creada.Area:F2}, Perímetro: {creada.Perimetro:F2}");
+            }
+            else
+            {
+                AnsiConsole.MarkupLine("[red]Error al crear la figura (ver log del servidor).[/]");
             }
         }
 
-        // Métodos auxiliares para las opciones del menú (puedes ajustar según tu implementación)
-        private static void EliminarFigura(GestorFiguras gestor)
+        // 🔹 Listar figuras (GET)
+        private static async Task MostrarFigurasAsync(GestorFigurasRemoto gestor)
         {
-            if (gestor.ListaFiguras.Count == 0)
+            var figuras = await gestor.ObtenerFigurasAsync();
+
+            if (figuras.Count == 0)
+            {
+                AnsiConsole.MarkupLine("[red]No hay figuras registradas.[/]");
+                return;
+            }
+
+            var tabla = new Table().AddColumns("ID", "Nombre", "Tipo", "Área", "Perímetro");
+
+            foreach (var f in figuras)
+                tabla.AddRow(f.Id.ToString(), f.Nombre, f.Tipo, f.Area.ToString("F2"), f.Perimetro.ToString("F2"));
+
+            AnsiConsole.Write(tabla);
+        }
+
+        // 🔹 Eliminar figura (DELETE)
+        private static async Task EliminarFiguraAsync(GestorFigurasRemoto gestor)
+        {
+            var figuras = await gestor.ObtenerFigurasAsync();
+
+            if (figuras.Count == 0)
             {
                 AnsiConsole.MarkupLine("[red]No hay figuras para eliminar.[/]");
                 return;
             }
 
-            var nombres = gestor.ListaFiguras.ConvertAll(f => f.Nombre);
-            string nombre = AnsiConsole.Prompt(
+            var opciones = new List<string>();
+            foreach (var f in figuras)
+                opciones.Add($"{f.Id} - {f.Nombre} ({f.Tipo})");
+
+            string seleccion = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                     .Title("[red]Seleccione la figura a eliminar:[/]")
-                    .AddChoices(nombres)
+                    .AddChoices(opciones)
             );
-            gestor.EliminarFigura(nombre);
-            AnsiConsole.MarkupLine($"[bold red] Figura '{nombre}' eliminada.[/]");
+
+            int id = int.Parse(seleccion.Split(" - ")[0]);
+
+            if (await gestor.EliminarFiguraAsync(id))
+                AnsiConsole.MarkupLine($"[green]Figura eliminada correctamente.[/]");
+            else
+                AnsiConsole.MarkupLine("[red]Error: no se pudo eliminar la figura.[/]");
         }
 
-        private static void MostrarFiguras(GestorFiguras gestor)
+        // 🔹 Totales (GET /figuras/totales)
+        private static async Task MostrarTotalesAsync(GestorFigurasRemoto gestor)
         {
-            if (gestor.ListaFiguras.Count == 0)
+            var totales = await gestor.TotalesAsync();
+            if (totales == null)
             {
-                AnsiConsole.MarkupLine("[red]No hay figuras para mostrar.[/]");
+                AnsiConsole.MarkupLine("[red]Error al obtener los totales.[/]");
                 return;
             }
-            gestor.MostrarTodasLasFiguras();
+
+            AnsiConsole.MarkupLine($"[bold blue]Área total:[/] {totales["area"]:F2}");
+            AnsiConsole.MarkupLine($"[bold blue]Perímetro total:[/] {totales["perimetro"]:F2}");
         }
 
-        private static void MostrarTotales(GestorFiguras gestor)
+        // 🔹 Controlador de opciones
+        private static async Task<bool> EjecutarOpcionAsync(int opcion, GestorFigurasRemoto gestor, bool salir)
         {
-            double area = gestor.CalcularAreaTotal();
-            double perimetro = gestor.CalcularPerimetroTotal();
-            AnsiConsole.MarkupLine($"[bold blue]Área total:[/] {area:N2}");
-            AnsiConsole.MarkupLine($"[bold blue]Perímetro total:[/] {perimetro:N2}");
+            switch (opcion)
+            {
+                case 0:
+                    await AgregarFiguraAsync(gestor);
+                    break;
+                case 1:
+                    await EliminarFiguraAsync(gestor);
+                    break;
+                case 2:
+                    await MostrarFigurasAsync(gestor);
+                    break;
+                case 3:
+                    await MostrarTotalesAsync(gestor);
+                    break;
+                case 4:
+                    return true;
+            }
+
+            AnsiConsole.MarkupLine("\n[grey]Presione una tecla para continuar...[/]");
+            Console.ReadKey(true);
+            return salir;
         }
     }
 }

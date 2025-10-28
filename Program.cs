@@ -1,13 +1,13 @@
-﻿using FigurasGeometricas.Models;
+﻿using FigurasGeometricas.Services;
 
 namespace FigurasGeometricas
 {
     internal class Program
     {
-        static void Main()
+        static async Task Main()
         {
-            GestorFiguras gestor = new GestorFiguras();
-            Menu.Mostrar(gestor);
+            var gestor = new GestorFigurasRemoto();
+            await Menu.MostrarAsync(gestor);
         }
     }
 }
